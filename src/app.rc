@@ -1,0 +1,73 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+IDI_APP ICON "../build/clear-copy.ico"
+IDI_PAUSED ICON "../build/clear-copy-paused.ico"
+1 RT_MANIFEST "app.manifest"
+
+IDD_SETTINGS DIALOGEX 0, 0, 248, 112
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Clear Copy 设置"
+FONT 10, "Segoe UI"
+BEGIN
+    CONTROL "监听剪贴板", IDC_ENABLED, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 16, 14, 216, 18
+    CONTROL "特殊清理", IDC_SPECIAL_ENABLED, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 16, 38, 48, 18
+    CONTROL "特殊清理配置", IDC_SPECIAL_CONFIG, "Button", BS_OWNERDRAW | WS_TABSTOP, 66, 38, 18, 18
+    CONTROL "开机自启动", IDC_STARTUP, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 16, 62, 216, 18
+    CONTROL "", IDC_STATUS, "Static", SS_OWNERDRAW | SS_NOTIFY, 192, 90, 6, 12
+    CONTROL "", IDC_STATUS_TEXT, "Static", SS_LEFT | SS_CENTERIMAGE, 202, 90, 30, 12
+END
+
+IDD_SPECIAL DIALOGEX 0, 0, 376, 300
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "特殊清理配置"
+FONT 10, "Segoe UI"
+BEGIN
+    GROUPBOX "空格", -1, 12, 10, 170, 96
+    CONTROL "删除每行开头空格", 1100, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 28, 150, 16
+    CONTROL "删除每行结尾空格", 1101, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 46, 150, 16
+    CONTROL "连续空格合并为一个", 1102, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 64, 150, 16
+    CONTROL "删除所有普通空格", 1103, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 82, 150, 16
+    GROUPBOX "特殊空白", -1, 194, 10, 170, 96
+    CONTROL "全角空格转普通空格", 1104, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 28, 150, 16
+    CONTROL "不换行空格转普通空格", 1105, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 46, 150, 16
+    CONTROL "Tab 转一个普通空格", 1106, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 64, 150, 16
+    CONTROL "删除 Tab", 1107, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 82, 150, 16
+    GROUPBOX "空行", -1, 12, 116, 170, 96
+    CONTROL "删除文本开头空行", 1108, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 134, 150, 16
+    CONTROL "删除文本结尾空行", 1109, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 152, 150, 16
+    CONTROL "连续空行合并为一个", 1110, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 170, 150, 16
+    CONTROL "删除所有空行", 1111, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 188, 150, 16
+    GROUPBOX "换行", -1, 194, 116, 170, 96
+    CONTROL "换行转一个普通空格", 1112, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 134, 150, 16
+    CONTROL "删除所有换行", 1113, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 152, 150, 16
+    GROUPBOX "隐藏字符", -1, 12, 222, 170, 64
+    CONTROL "删除零宽空格", 1114, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 240, 150, 16
+    CONTROL "删除 BOM 字符", 1115, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 22, 258, 150, 16
+    GROUPBOX "图片与文件", -1, 194, 222, 170, 64
+    CONTROL "移除图片", 1116, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 240, 150, 16
+    CONTROL "移除文件附件", 1117, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 204, 258, 150, 16
+END
+
+1 VERSIONINFO
+FILEVERSION 0,3,0,0
+PRODUCTVERSION 0,3,0,0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "FileDescription", "Clear Copy - 纯文本剪贴板工具\0"
+            VALUE "FileVersion", "0.3.0\0"
+            VALUE "ProductName", "Clear Copy\0"
+            VALUE "ProductVersion", "0.3.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0804, 1200
+    END
+END
